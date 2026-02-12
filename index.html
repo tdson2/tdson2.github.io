@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Trần Đức Sơn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --accent-line: #ffa500;
+      --text-primary: #fff;
+      --text-secondary: rgba(255, 255, 255, 0.9);
+      --text-muted: rgba(255, 255, 255, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      padding: 2rem 1rem;
+      color: var(--text-primary);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .floating-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      filter: blur(40px);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { width: 200px; height: 200px; top: 60%; right: 15%; animation-delay: -5s; }
+    .shape:nth-child(3) { width: 250px; height: 250px; bottom: 20%; left: 30%; animation-delay: -10s; }
+    .shape:nth-child(4) { width: 150px; height: 150px; top: 30%; right: 30%; animation-delay: -7s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    .cv-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 1.5rem;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .avatar-section {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .avatar-placeholder {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent-line);
+      display: block;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .info-icon {
+      font-size: 1rem;
+      min-width: 20px;
+      color: var(--text-secondary);
+    }
+
+    .info-text {
+      flex: 1;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .info-text a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .info-text a:hover {
+      color: var(--text-primary);
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      padding: 0.4rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .hobbies-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .hobbies-list li {
+      padding: 0.3rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .objective-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .experience-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .company-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .role-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .role-period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .role-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievements {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .achievements-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .achievements-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .achievements-list li {
+      padding: 0.3rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .achievements-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-line);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .education-item {
+      margin-bottom: 1rem;
+    }
+
+    .education-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .school-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .degree-name {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+
+    .education-period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+      
+      .left-column,
+      .right-column {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.75rem; }
+      .glass-card { padding: 1.25rem; }
+      .avatar-placeholder { width: 120px; height: 120px; font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <main class="cv-container">
+    <!-- Cột trái -->
+    <aside class="left-column">
+      <article class="glass-card avatar-section">
+        <div class="avatar-placeholder">TĐS</div>
+        <h1 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem;">Trần Đức Sơn</h1>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Trưởng phòng Ban AI</p>
+      </article>
+
+      <article class="glass-card">
+        <h2 class="section-title">Thông tin cá nhân</h2>
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <span class="info-text"><a href="tel:0343185566">0343 185 566</a></span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🎂</span>
+          <span class="info-text">27/08/1998</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <span class="info-text">Hà Nội, Việt Nam</span>
+        </div>
+      </article>
+
+      <article class="glass-card">
+        <h2 class="section-title">Kỹ năng</h2>
+        <ul class="skills-list">
+          <li>Trí tuệ nhân tạo & Machine Learning</li>
+          <li>Quản lý đội ngũ & Dự án</li>
+          <li>Phát triển sản phẩm AI</li>
+          <li>Nghiên cứu & Phát triển</li>
+        </ul>
+      </article>
+
+      <article class="glass-card">
+        <h2 class="section-title">Sở thích</h2>
+        <ul class="hobbies-list">
+          <li>Công nghệ AI</li>
+          <li>Đọc sách</li>
+          <li>Thể thao</li>
+        </ul>
+      </article>
+    </aside>
+
+    <!-- Cột phải -->
+    <section class="right-column">
+      <article class="glass-card">
+        <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+        <p class="objective-text">
+          Với hơn 6 năm kinh nghiệm trong lĩnh vực Trí tuệ nhân tạo và đang giữ vị trí Trưởng phòng Ban AI tại Bkav, tôi mong muốn tiếp tục phát triển và đóng góp vào sự phát triển của ngành AI tại Việt Nam. Mục tiêu của tôi là xây dựng các sản phẩm AI tiên tiến, dẫn dắt đội ngũ phát triển và ứng dụng công nghệ AI vào thực tế để mang lại giá trị cho doanh nghiệp và xã hội.
+        </p>
+      </article>
+
+      <article class="glass-card">
+        <h2 class="section-title">Kinh nghiệm làm việc</h2>
+        <div class="experience-item">
+          <div class="company-name">Bkav</div>
+          <div class="role-title">Trưởng phòng Ban AI</div>
+          <div class="role-period">2018 – Hiện tại</div>
+          <div class="role-description">
+            Lãnh đạo và quản lý đội ngũ phát triển các sản phẩm và giải pháp AI cho công ty. Chịu trách nhiệm về chiến lược phát triển, nghiên cứu và ứng dụng công nghệ AI vào các sản phẩm của Bkav.
+          </div>
+          <div class="achievements">
+            <div class="achievements-title">Thành tựu:</div>
+            <ul class="achievements-list">
+              <li>Xây dựng và phát triển đội ngũ AI chuyên nghiệp</li>
+              <li>Nghiên cứu và triển khai các giải pháp AI tiên tiến</li>
+              <li>Đóng góp vào sự phát triển của các sản phẩm công nghệ của Bkav</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="glass-card">
+        <h2 class="section-title">Học vấn</h2>
+        <div class="education-item">
+          <div class="school-name">Đại học Bách Khoa Hà Nội</div>
+          <div class="degree-name">Cử nhân / Kỹ sư</div>
+          <div class="education-period">Khóa 2016 – 2021</div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
