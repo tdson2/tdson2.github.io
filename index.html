@@ -4,17 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Trần Đức Sơn</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.3);
-      --accent-line: #ffa500;
-      --text-primary: #fff;
-      --text-secondary: rgba(255, 255, 255, 0.9);
-      --text-muted: rgba(255, 255, 255, 0.75);
+      --text-primary: #1a1a1a;
+      --text-secondary: #333;
+      --text-muted: #555;
+      --border-color: #1a1a1a;
+      --page-width: 210mm;
     }
 
     * {
@@ -24,331 +20,447 @@
     }
 
     body {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      padding: 2rem 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      line-height: 1.4;
       color: var(--text-primary);
+      background: #f5f5f5;
+      padding: 2rem 1rem;
+      min-height: 100vh;
     }
 
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .floating-shapes {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .shape {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      filter: blur(40px);
-      animation: float 20s ease-in-out infinite;
-    }
-
-    .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s; }
-    .shape:nth-child(2) { width: 200px; height: 200px; top: 60%; right: 15%; animation-delay: -5s; }
-    .shape:nth-child(3) { width: 250px; height: 250px; bottom: 20%; left: 30%; animation-delay: -10s; }
-    .shape:nth-child(4) { width: 150px; height: 150px; top: 30%; right: 30%; animation-delay: -7s; }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -30px) scale(1.05); }
-      66% { transform: translate(-20px, 20px) scale(0.95); }
-    }
-
-    .cv-container {
-      max-width: 1000px;
+    .cv-page {
+      max-width: var(--page-width);
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 1.5rem;
+      background: #fff;
+      padding: 1.25in 1in;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
-    .glass-card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .glass-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .left-column {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .right-column {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .avatar-section {
+    /* Header: Tên + chức danh */
+    .cv-header {
       text-align: center;
-      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .avatar-placeholder {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 1rem;
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
+    .cv-name {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 22pt;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
     }
 
+    .cv-title {
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Thông tin liên hệ trên một dòng */
+    .cv-contact {
+      text-align: center;
+      font-size: 10pt;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cv-contact span {
+      margin: 0 0.5rem;
+    }
+
+    .cv-contact span:not(:last-child)::after {
+      content: "|";
+      margin-left: 1rem;
+      color: #999;
+    }
+
+    .cv-contact a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .cv-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tiêu đề section kiểu Harvard: IN HOA + gạch dưới */
     .section-title {
-      font-size: 0.9rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
       color: var(--text-primary);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid var(--accent-line);
-      display: block;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
+    /* Khoảng cách giữa các section: dùng padding để tránh margin collapse */
+    .cv-page > section + section {
+      padding-top: 2.5rem;
     }
 
-    .info-icon {
-      font-size: 1rem;
-      min-width: 20px;
+    /* Mục tiêu nghề nghiệp */
+    .objective-text {
       color: var(--text-secondary);
-    }
-
-    .info-text {
-      flex: 1;
-      color: var(--text-secondary);
+      text-align: justify;
+      font-size: 10.5pt;
       line-height: 1.5;
     }
 
-    .info-text a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .info-text a:hover {
-      color: var(--text-primary);
-    }
-
-    .skills-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skills-list li {
-      padding: 0.4rem 0;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .hobbies-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .hobbies-list li {
-      padding: 0.3rem 0;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .objective-text {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      text-align: justify;
-    }
-
+    /* Kinh nghiệm: dòng đầu = vị trí + thời gian (phải) */
     .experience-item {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .experience-item:last-child {
       margin-bottom: 0;
     }
 
-    .company-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.3rem;
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .role-title {
-      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 0.3rem;
+      font-size: 11pt;
     }
 
     .role-period {
-      font-size: 0.85rem;
+      font-size: 10pt;
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    .company-name {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
     }
 
     .role-description {
       color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 0.5rem;
-    }
-
-    .achievements {
-      margin-top: 0.75rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .achievements-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
+      font-size: 10pt;
+      line-height: 1.5;
+      margin-bottom: 0.25rem;
     }
 
     .achievements-list {
       list-style: none;
       padding: 0;
+      margin: 0.25rem 0 0 0;
     }
 
     .achievements-list li {
-      padding: 0.3rem 0;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      padding-left: 1.2rem;
       position: relative;
-      line-height: 1.6;
+      padding-left: 1em;
+      margin-bottom: 0.2rem;
+      color: var(--text-secondary);
+      font-size: 10pt;
+      line-height: 1.5;
     }
 
     .achievements-list li::before {
       content: "•";
       position: absolute;
       left: 0;
-      color: var(--accent-line);
+      color: var(--text-primary);
       font-weight: bold;
-      font-size: 1.2rem;
     }
 
+    /* Học vấn: tương tự experience */
     .education-item {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .education-item:last-child {
       margin-bottom: 0;
     }
 
-    .school-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.3rem;
+    .education-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .degree-name {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 11pt;
     }
 
     .education-period {
-      font-size: 0.85rem;
+      font-size: 10pt;
       color: var(--text-muted);
-      font-weight: 500;
+      white-space: nowrap;
     }
 
-    @media (max-width: 900px) {
-      .cv-container {
+    .school-name {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Dự án: Tên dự án + Thời gian + Mô tả */
+    .project-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 11pt;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-period {
+      font-size: 10pt;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 9pt;
+      padding: 0.2rem 0.5rem;
+      background: #e8e8e8;
+      color: var(--text-secondary);
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    /* Kỹ năng & Sở thích: dạng danh sách đơn giản */
+    .skills-list,
+    .hobbies-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li,
+    .hobbies-list li {
+      padding: 0.15rem 0;
+      color: var(--text-secondary);
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding-top: 2.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .cv-page {
+        padding: 1rem 1.25rem;
+      }
+
+      .two-columns {
         grid-template-columns: 1fr;
-        max-width: 600px;
       }
-      
-      .left-column,
-      .right-column {
-        gap: 1rem;
-      }
-    }
 
-    @media (max-width: 600px) {
-      body { padding: 1rem 0.75rem; }
-      .glass-card { padding: 1.25rem; }
-      .avatar-placeholder { width: 120px; height: 120px; font-size: 2.5rem; }
+      .experience-head,
+      .education-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .role-period,
+      .education-period {
+        white-space: normal;
+      }
+
+      .cv-contact span::after {
+        display: none;
+      }
+
+      .cv-contact span {
+        display: block;
+        margin: 0.25rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="floating-shapes">
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
+  <main class="cv-page">
+    <header class="cv-header">
+      <h1 class="cv-name">Trần Đức Sơn</h1>
+      <p class="cv-title">AI Engineer</p>
+    </header>
 
-  <main class="cv-container">
-    <!-- Cột trái -->
-    <aside class="left-column">
-      <article class="glass-card avatar-section">
-        <div class="avatar-placeholder">TĐS</div>
-        <h1 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem;">Trần Đức Sơn</h1>
-        <p style="font-size: 0.9rem; color: var(--text-muted);">Trưởng phòng Ban AI</p>
-      </article>
+    <div class="cv-contact">
+      <span>Hà Nội, Việt Nam</span>
+      <span><a href="tel:0343185566">0343 185 566</a></span>
+      <span>27/08/1998</span>
+      <span><a href="mailto:son.td278@gmail.com">son.td278@gmail.com</a></span>
+    </div>
 
-      <article class="glass-card">
-        <h2 class="section-title">Thông tin cá nhân</h2>
-        <div class="info-item">
-          <span class="info-icon">📞</span>
-          <span class="info-text"><a href="tel:0343185566">0343 185 566</a></span>
-        </div>
-        <div class="info-item">
-          <span class="info-icon">🎂</span>
-          <span class="info-text">27/08/1998</span>
-        </div>
-        <div class="info-item">
-          <span class="info-icon">📍</span>
-          <span class="info-text">Hà Nội, Việt Nam</span>
-        </div>
-      </article>
+    <section>
+      <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+      <p class="objective-text">
+        Với hơn 6 năm kinh nghiệm trong lĩnh vực Trí tuệ nhân tạo và đang giữ vị trí Trưởng phòng Ban AI tại Bkav, tôi mong muốn tiếp tục phát triển và đóng góp vào sự phát triển của ngành AI tại Việt Nam. Mục tiêu của tôi là xây dựng các sản phẩm AI tiên tiến, dẫn dắt đội ngũ phát triển và ứng dụng công nghệ AI vào thực tế để mang lại giá trị cho doanh nghiệp và xã hội.
+      </p>
+    </section>
 
-      <article class="glass-card">
+    <section>
+      <h2 class="section-title">Về kinh nghiệm</h2>
+      <p class="objective-text">
+        Tôi có hơn 6 năm làm việc trong lĩnh vực Trí tuệ nhân tạo, từ vị trí kỹ sư nghiên cứu đến Trưởng phòng Ban AI tại Bkav. Trải qua nhiều dự án từ nghiên cứu, POC đến triển khai sản phẩm thực tế, tôi đã tích lũy kinh nghiệm sâu về Machine Learning, xử lý ngôn ngữ tự nhiên, thị giác máy tính và quản lý đội ngũ kỹ thuật. Tôi có khả năng chuyển bài toán nghiệp vụ thành giải pháp AI, tối ưu mô hình và đưa vào vận hành ổn định.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Kinh nghiệm làm việc</h2>
+      <div class="experience-item">
+        <div class="experience-head">
+          <span class="role-title">Trưởng phòng Ban AI</span>
+          <span class="role-period">2018 – Hiện tại</span>
+        </div>
+        <div class="company-name">Bkav</div>
+        <p class="role-description">
+          Lãnh đạo và quản lý đội ngũ phát triển các sản phẩm và giải pháp AI cho công ty. Chịu trách nhiệm về chiến lược phát triển, nghiên cứu và ứng dụng công nghệ AI vào các sản phẩm của Bkav.
+        </p>
+        <ul class="achievements-list">
+          <li>Xây dựng và phát triển đội ngũ AI chuyên nghiệp</li>
+          <li>Nghiên cứu và triển khai các giải pháp AI tiên tiến</li>
+          <li>Đóng góp vào sự phát triển của các sản phẩm công nghệ của Bkav</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Các dự án công ty</h2>
+      <div class="project-item">
+        <div class="project-name">Hệ thống quản lý pháp luật Việt Nam và chatbot hỗ trợ pháp lý</div>
+        <div class="project-tags">
+          <span class="project-tag">AI</span>
+          <span class="project-tag">NLP</span>
+          <span class="project-tag">Web</span>
+        </div>
+        <div class="project-period">Thời gian: 2020 – Hiện tại</div>
+        <p class="project-desc">Xây dựng hệ thống quản lý văn bản pháp luật Việt Nam, tích hợp chatbot hỗ trợ tra cứu và tư vấn pháp lý cơ bản bằng công nghệ xử lý ngôn ngữ tự nhiên (NLP). Hệ thống giúp người dùng tìm kiếm, đối chiếu văn bản và nhận giải đáp nhanh các câu hỏi pháp lý thường gặp.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">Thu thập dữ liệu Wiki Tiếng Việt và xây dựng hệ thống tìm kiếm ngữ nghĩa trên bộ dữ liệu</div>
+        <div class="project-tags">
+          <span class="project-tag">AI</span>
+          <span class="project-tag">NLP</span>
+          <span class="project-tag">Data</span>
+        </div>
+        <div class="project-period">Thời gian: 2019 – 2021</div>
+        <p class="project-desc">Thu thập, làm sạch và chuẩn hóa dữ liệu từ Wikipedia tiếng Việt; xây dựng pipeline nhúng văn bản (embedding) và tìm kiếm ngữ nghĩa (semantic search) để tra cứu thông tin theo nghĩa, phục vụ nghiên cứu và sản phẩm tìm kiếm nội bộ.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">Nghiên cứu, xây dựng, cải tiến và tối ưu mô hình AI Core cho phần mềm diệt Virus Bkav Pro Security AI Cloud</div>
+        <div class="project-tags">
+          <span class="project-tag">AI</span>
+          <span class="project-tag">Security</span>
+          <span class="project-tag">Cloud</span>
+        </div>
+        <div class="project-period">Thời gian: 2018 – Hiện tại</div>
+        <p class="project-desc">Nghiên cứu và phát triển mô hình AI Core dùng cho nhận diện mã độc, phân tích hành vi và bảo vệ thiết bị trong Bkav Pro Security. Liên tục cải tiến, tối ưu mô hình và pipeline triển khai lên AI Cloud để đảm bảo độ chính xác, hiệu năng và khả năng cập nhật theo mối đe dọa mới.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Các dự án cá nhân</h2>
+      <div class="project-item">
+        <div class="project-name">Lý thuyết lái xe — Hệ thống sinh bài test và giả lập kiểm tra lý thuyết lái xe</div>
+        <div class="project-tags">
+          <span class="project-tag">QR Code</span>
+          <span class="project-tag">Android</span>
+          <span class="project-tag">iOS</span>
+        </div>
+        <div class="project-period">Thời gian: —</div>
+        <p class="project-desc">Ứng dụng ôn tập và thi thử lý thuyết lái xe: sinh đề thi ngẫu nhiên, giả lập bài kiểm tra sát với đề thật, hỗ trợ quét QR Code và có phiên bản App Android, App iOS.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">BKSafe — Phần mềm theo dõi tình trạng điện thoại, công cụ hỗ trợ theo dõi và rà quét mã độc</div>
+        <div class="project-tags">
+          <span class="project-tag">QR Code</span>
+          <span class="project-tag">Android</span>
+        </div>
+        <div class="project-period">Thời gian: —</div>
+        <p class="project-desc">Ứng dụng Android giúp theo dõi tình trạng thiết bị, hỗ trợ định vị/theo dõi điện thoại và tích hợp chức năng rà quét mã độc. Có hỗ trợ QR Code để kết nối và quản lý thiết bị.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">ChefEasy — Web hướng dẫn nấu ăn</div>
+        <div class="project-tags">
+          <span class="project-tag">Web</span>
+        </div>
+        <div class="project-period">Thời gian: —</div>
+        <p class="project-desc">Website cung cấp công thức và hướng dẫn nấu ăn, tra cứu món theo nguyên liệu và độ khó, phù hợp người dùng gia đình.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">Mediastar, Chillsport — Hệ thống web media tin tức và Automation Flow đăng bài</div>
+        <div class="project-tags">
+          <span class="project-tag">Web</span>
+          <span class="project-tag">Automation</span>
+        </div>
+        <div class="project-period">Thời gian: —</div>
+        <p class="project-desc">Xây dựng hệ thống các website tin tức/giải trí (Mediastar, Chillsport) và luồng tự động hóa (Automation Flow) đăng bài, quản lý nội dung từ nguồn đến xuất bản.</p>
+      </div>
+      <div class="project-item">
+        <div class="project-name">Hệ thống theo dõi Luật Việt Nam và thế giới + Chatbot hỗ trợ về luật</div>
+        <div class="project-tags">
+          <span class="project-tag">Web</span>
+          <span class="project-tag">AI</span>
+        </div>
+        <div class="project-period">Thời gian: —</div>
+        <p class="project-desc">Hệ thống web tổng hợp và theo dõi văn bản pháp luật Việt Nam và quốc tế, kết hợp chatbot trả lời câu hỏi và hỗ trợ tra cứu pháp lý cơ bản.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Học vấn</h2>
+      <div class="education-item">
+        <div class="education-head">
+          <span class="degree-name">Kỹ sư</span>
+          <span class="education-period">Khóa 2016 – 2021</span>
+        </div>
+        <div class="school-name">Đại học Bách Khoa Hà Nội</div>
+      </div>
+    </section>
+
+    <div class="two-columns">
+      <section>
         <h2 class="section-title">Kỹ năng</h2>
         <ul class="skills-list">
           <li>Trí tuệ nhân tạo & Machine Learning</li>
@@ -356,55 +468,23 @@
           <li>Phát triển sản phẩm AI</li>
           <li>Nghiên cứu & Phát triển</li>
         </ul>
-      </article>
-
-      <article class="glass-card">
+      </section>
+      <section>
         <h2 class="section-title">Sở thích</h2>
         <ul class="hobbies-list">
           <li>Công nghệ AI</li>
           <li>Đọc sách</li>
           <li>Thể thao</li>
         </ul>
-      </article>
-    </aside>
+      </section>
+    </div>
 
-    <!-- Cột phải -->
-    <section class="right-column">
-      <article class="glass-card">
-        <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
-        <p class="objective-text">
-          Với hơn 6 năm kinh nghiệm trong lĩnh vực Trí tuệ nhân tạo và đang giữ vị trí Trưởng phòng Ban AI tại Bkav, tôi mong muốn tiếp tục phát triển và đóng góp vào sự phát triển của ngành AI tại Việt Nam. Mục tiêu của tôi là xây dựng các sản phẩm AI tiên tiến, dẫn dắt đội ngũ phát triển và ứng dụng công nghệ AI vào thực tế để mang lại giá trị cho doanh nghiệp và xã hội.
-        </p>
-      </article>
-
-      <article class="glass-card">
-        <h2 class="section-title">Kinh nghiệm làm việc</h2>
-        <div class="experience-item">
-          <div class="company-name">Bkav</div>
-          <div class="role-title">Trưởng phòng Ban AI</div>
-          <div class="role-period">2018 – Hiện tại</div>
-          <div class="role-description">
-            Lãnh đạo và quản lý đội ngũ phát triển các sản phẩm và giải pháp AI cho công ty. Chịu trách nhiệm về chiến lược phát triển, nghiên cứu và ứng dụng công nghệ AI vào các sản phẩm của Bkav.
-          </div>
-          <div class="achievements">
-            <div class="achievements-title">Thành tựu:</div>
-            <ul class="achievements-list">
-              <li>Xây dựng và phát triển đội ngũ AI chuyên nghiệp</li>
-              <li>Nghiên cứu và triển khai các giải pháp AI tiên tiến</li>
-              <li>Đóng góp vào sự phát triển của các sản phẩm công nghệ của Bkav</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass-card">
-        <h2 class="section-title">Học vấn</h2>
-        <div class="education-item">
-          <div class="school-name">Đại học Bách Khoa Hà Nội</div>
-          <div class="degree-name">Cử nhân / Kỹ sư</div>
-          <div class="education-period">Khóa 2016 – 2021</div>
-        </div>
-      </article>
+    <section>
+      <h2 class="section-title">Tham chiếu</h2>
+      <p class="cv-contact cv-contact-ref">
+        <span><a href="https://github.com/tdson2" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+        <span><a href="https://www.linkedin.com/in/son-tran-458b24158/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+      </p>
     </section>
   </main>
 </body>
